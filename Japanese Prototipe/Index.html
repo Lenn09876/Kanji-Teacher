@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Japanese Kanji Learning</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-image: url("girl.jpg");
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-end;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            margin-top: 5px;
+            font-size: 36px; /* Decreased font size for smaller screens */
+            font-family: 'Comic Sans MS', cursive;
+            color: white;
+        }
+
+        .japanese {
+            font-size: 18px; /* Decreased font size for smaller screens */
+            color: white;
+        }
+
+        .button-container {
+            display: flex;
+            flex-wrap: wrap; /* Allow buttons to wrap to multiple lines on smaller screens */
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .button {
+            background-color: red;
+            border: none;
+            color: white;
+            padding: 10px 16px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 18px; /* Decreased font size for smaller screens */
+            margin-top: 10px; /* Decreased margin for smaller screens */
+            cursor: pointer;
+            border-radius: 20px;
+            width: 180px; /* Decreased width for smaller screens */
+            height: 50px; /* Decreased height for smaller screens */
+            margin: 5px; /* Decreased margin for smaller screens */
+        }
+
+        /* Media query for smaller screens (phones) */
+        @media screen and (max-width: 480px) {
+            h1 {
+                font-size: 24px;
+            }
+
+            .japanese {
+                font-size: 16px;
+            }
+
+            .button {
+                font-size: 14px;
+                width: 150px;
+                height: 40px;
+                margin: 3px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Japanese Kanji Learning</h1>
+    <div class="japanese">日本語</div>
+    <div class="button-container">
+        <a href="fruits.html" class="button">Fruits</a>
+        <a href="numbers.html" class="button">Numbers</a>
+        <a href="school.html" class="button">School</a>
+        <a href="verbs.html" class="button">Verbs</a>
+    </div>
+
+    <script>
+        // JavaScript code can be added here if needed
+    </script>
+</body>
+</html>

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Fruits Kanji</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f2f2f2;
+        }
+
+        h1 {
+            margin-top: 50px;
+        }
+
+        #fruit-image {
+            margin-top: 20px;
+        }
+
+        #kanji {
+            font-size: 100px;
+            margin-top: 30px;
+        }
+
+        #meaning {
+            font-size: 24px;
+            margin-top: 20px;
+        }
+
+        #reading {
+            font-size: 18px;
+            display: none;
+            margin-top: 10px;
+        }
+
+        .button {
+            background-color: red;
+            border: none;
+            color: white;
+            padding: 10px 16px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin-top: 20px;
+            cursor: pointer;
+            border-radius: 8px;
+        }
+
+        .button-prev {
+            margin-right: 10px;
+        }
+
+        .button-next {
+            margin-left: 10px;
+        }
+
+        #return-button {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Fruits Kanji</h1>
+    <img src="fruit.jpg" id="fruit-image" alt="Fruit Image">
+    <div id="kanji"></div>
+    <div id="meaning"></div>
+    <div id="reading"></div>
+    <button id="show-reading" class="button">Show Reading</button>
+    <div>
+        <button id="prev-button" class="button button-prev">&lt;</button>
+        <button id="next-button" class="button button-next">&gt;</button>
+    </div>
+    <button id="return-button" class="button">Return to Menu</button>
+
+    <script>
+        var currentIndex = 0;
+
+        var kanjiList = [
+            { kanji: '果', meaning: 'Fruit', reading: 'か' },
+            { kanji: '葡', meaning: 'Grape', reading: 'ぶ' },
+            { kanji: '桃', meaning: 'Peach', reading: 'もも' },
+            // Add more fruit kanji objects here
+        ];
+
+        var kanjiElement = document.getElementById("kanji");
+        var meaningElement = document.getElementById("meaning");
+        var readingElement = document.getElementById("reading");
+        var showReadingButton = document.getElementById("show-reading");
+        var prevButton = document.getElementById("prev-button");
+        var nextButton = document.getElementById("next-button");
+        var returnButton = document.getElementById("return-button");
+
+        function showKanji() {
+            var currentKanji = kanjiList[currentIndex];
+            kanjiElement.innerHTML = currentKanji.kanji;
+            meaningElement.innerHTML = currentKanji.meaning;
+            readingElement.innerHTML = currentKanji.reading;
+            readingElement.style.display = "none";
+        }
+
+        function showReading() {
+            readingElement.style.display = "block";
+        }
+
+        function prevKanji() {
+            currentIndex = (currentIndex - 1 + kanjiList.length) % kanjiList.length;
+            showKanji();
+        }
+
+        function nextKanji() {
+            currentIndex = (currentIndex + 1) % kanjiList.length;
+            showKanji();
+        }
+
+        showKanji();
+
+                showReadingButton.addEventListener("click", showReading);
+        prevButton.addEventListener("click", prevKanji);
+        nextButton.addEventListener("click", nextKanji);
+        returnButton.addEventListener("click", function() {
+            location.href = "index.html";
+        });
+    </script>
+</body>
+</html>
+

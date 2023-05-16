@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Numbers Kanji</title>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            text-align: center;
+            background-image: url('numbers.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            margin-top: 50px;
+            color: black;
+        }
+
+        #content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        #kanji {
+            font-size: 100px;
+            margin-top: 30px;
+            color: red;
+        }
+
+        #meaning {
+            font-size: 25px;
+            margin-top: 20px;
+            color: red;
+        }
+
+        #pronunciation {
+            font-size: 18px;
+            margin-top: 10px;
+            color: red;
+        }
+
+        .button {
+            background-color: red;
+            border: none;
+            color: white;
+            padding: 10px 16px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin-top: 20px;
+            cursor: pointer;
+            border-radius: 8px;
+        }
+
+        .button-prev {
+            margin-right: 10px;
+        }
+
+        .button-next {
+            margin-left: 10px;
+        }
+
+        #return-button {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="content">
+        <h1>Numbers Kanji</h1>
+        <div id="kanji"></div>
+        <div id="meaning"></div>
+        <div id="pronunciation"></div>
+        <div>
+            <button id="prev-button" class="button button-prev">&lt;</button>
+            <button id="next-button" class="button button-next">&gt;</button>
+        </div>
+        <button id="return-button" class="button">Return to Menu</button>
+    </div>
+
+    <script>
+        var currentIndex = 0;
+
+        var kanjiList = [
+    { kanji: '零', meaning: 'Zero', pronunciation: 'れい' },
+    { kanji: '一', meaning: 'One', pronunciation: 'いち' },
+    { kanji: '二', meaning: 'Two', pronunciation: 'に' },
+    { kanji: '三', meaning: 'Three', pronunciation: 'さん' },
+    { kanji: '四', meaning: 'Four', pronunciation: 'し' },
+    { kanji: '五', meaning: 'Five', pronunciation: 'ご' },
+    { kanji: '六', meaning: 'Six', pronunciation: 'ろく' },
+    { kanji: '七', meaning: 'Seven', pronunciation: 'しち' },
+    { kanji: '八', meaning: 'Eight', pronunciation: 'はち' },
+    { kanji: '九', meaning: 'Nine', pronunciation: 'きゅう' },
+    { kanji: '十', meaning: 'Ten', pronunciation: 'じゅう' },
+    { kanji: '二十', meaning: 'Twenty', pronunciation: 'にじゅう' },
+    { kanji: '三十', meaning: 'Thirty', pronunciation: 'さんじゅう' },
+    { kanji: '四十', meaning: 'Forty', pronunciation: 'しじゅう' },
+    { kanji: '五十', meaning: 'Fifty', pronunciation: 'ごじゅう' },
+    { kanji: '六十', meaning: 'Sixty', pronunciation: 'ろくじゅう' },
+    { kanji: '七十', meaning: 'Seventy', pronunciation: 'しちじゅう' },
+    { kanji: '八十', meaning: 'Eighty', pronunciation: 'はちじゅう' },
+    { kanji: '九十', meaning: 'Ninety', pronunciation: 'きゅうじゅう' },
+    { kanji: '百', meaning: 'Hundred', pronunciation: 'ひゃく' },
+    { kanji: '千', meaning: 'Thousand', pronunciation: 'せん' }
+];
+
+
+        var kanjiElement = document.getElementById("kanji");
+        var meaningElement = document.getElementById("meaning");
+        var pronunciationElement = document.getElementById("pronunciation");
+        var prevButton = document.getElementById("prev-button");
+        var nextButton = document.getElementById("next-button");
+        var returnButton = document.getElementById("return-button");
+
+        function showKanji() {
+            var currentKanji = kanjiList[currentIndex];
+            kanjiElement.textContent = currentKanji.kanji;
+            meaningElement.textContent = currentKanji.meaning;
+            pronunciationElement.textContent = currentKanji.pronunciation;
+        }
+
+        function prevKanji() {
+            currentIndex = (currentIndex - 1 + kanjiList.length) % kanjiList.length;
+            showKanji();
+        }
+
+        function
+        
+nextKanji() {
+currentIndex = (currentIndex + 1) % kanjiList.length;
+showKanji();
+}
+        
+            showKanji();
+
+    prevButton.addEventListener("click", prevKanji);
+    nextButton.addEventListener("click", nextKanji);
+    returnButton.addEventListener("click", function() {
+        location.href = "index.html";
+    });
+</script>
+</body>
+</html>
+```
+
+
+
+
+
+
+

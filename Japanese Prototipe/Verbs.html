@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Verbs Kanji</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-image: url('verbs.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            margin-top: 50px;
+            color: white;
+        }
+
+        #content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        #kanji {
+            font-size: 100px;
+            margin-top: 30px;
+            color: white;
+        }
+
+        #meaning {
+            font-size: 24px;
+            margin-top: 20px;
+            color: white;
+        }
+
+        #reading {
+            font-size: 18px;
+            display: none;
+            margin-top: 10px;
+            color: white;
+        }
+
+        .button {
+            background-color: red;
+            border: none;
+            color: white;
+            padding: 10px 16px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin-top: 20px;
+            cursor: pointer;
+            border-radius: 8px;
+        }
+
+        .button-prev {
+            margin-right: 10px;
+        }
+
+        .button-next {
+            margin-left: 10px;
+        }
+
+        #return-button {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="content">
+        <h1>Verbs Kanji</h1>
+        <div id="kanji"></div>
+        <div id="meaning"></div>
+        <div id="reading"></div>
+        <button id="show-reading" class="button">Show Reading</button>
+        <div>
+            <button id="prev-button" class="button button-prev">&lt;</button>
+            <button id="next-button" class="button button-next">&gt;</button>
+        </div>
+        <button id="return-button" class="button">Return to Menu</button>
+    </div>
+
+    <script>
+        var currentIndex = 0;
+
+        var kanjiList = [
+            { kanji: '行', meaning: 'Go', reading: 'い/こう' },
+            { kanji: '食', meaning: 'Eat', reading: 'しょく' },
+            { kanji: '読', meaning: 'Read', reading: 'どく/とう' },
+            { kanji: '書', meaning: 'Write', reading: 'しょ' },
+            { kanji: '話', meaning: 'Speak', reading: 'わ' },
+            { kanji: '聞', meaning: 'Listen', reading: 'ぶん' },
+            { kanji: '見', meaning: 'See', reading: 'けん' },
+            { kanji: '言', meaning: 'Say', reading: 'ごん' },
+            { kanji: '出', meaning: 'Go out', reading: 'しゅつ' },
+            { kanji: '入', meaning: 'Enter', reading: 'にゅう' },
+                        { kanji: '走', meaning: 'Run', reading: 'そう' },
+            { kanji: '泳', meaning: 'Swim', reading: 'えい' },
+            { kanji: '歩', meaning: 'Walk', reading: 'ほ' },
+            { kanji: '立', meaning: 'Stand', reading: 'りつ' },
+            { kanji: '座', meaning: 'Sit', reading: 'ざ' },
+            { kanji: '寝', meaning: 'Sleep', reading: 'しん' },
+            { kanji: '起', meaning: 'Wake up', reading: 'き' },
+            { kanji: '笑', meaning: 'Laugh', reading: 'しょう' },
+            { kanji: '待', meaning: 'Wait', reading: 'たい' },
+            { kanji: '渡', meaning: 'Cross', reading: 'と' },
+            { kanji: '終', meaning: 'Finish', reading: 'しゅう' },
+            { kanji: '始', meaning: 'Start', reading: 'し' },
+            { kanji: '使', meaning: 'Use', reading: 'し' },
+            { kanji: '知', meaning: 'Know', reading: 'ち' },
+            { kanji: '学', meaning: 'Study', reading: 'がく' },
+            { kanji: '思', meaning: 'Think', reading: 'そう' },
+            { kanji: '待', meaning: 'Wait', reading: 'ま' },
+            { kanji: '答', meaning: 'Answer', reading: 'とう' },
+            { kanji: '聞', meaning: 'Ask', reading: 'き' },
+            { kanji: '筆', meaning: 'Write', reading: 'ひつ' },
+            { kanji: '勉', meaning: 'Study', reading: 'べん' },
+            { kanji: '習', meaning: 'Learn', reading: 'しゅう' },
+            { kanji: '話', meaning: 'Talk', reading: 'わ' },
+            { kanji: '教', meaning: 'Teach', reading: 'きょう' },
+            { kanji: '習', meaning: 'Practice', reading: 'しゅう' },
+            { kanji: '探', meaning: 'Search', reading: 'たん' },
+            { kanji: '出', meaning: 'Go out', reading: 'しゅつ' }
+            // Add more verb kanji objects here
+        ];
+
+        var kanjiElement = document.getElementById("kanji");
+        var meaningElement = document.getElementById("meaning");
+        var readingElement = document.getElementById("reading");
+        var showReadingButton = document.getElementById("show-reading");
+        var prevButton = document.getElementById("prev-button");
+        var nextButton = document.getElementById("next-button");
+        var returnButton = document.getElementById("return-button");
+
+        function showKanji() {
+            var currentKanji = kanjiList[currentIndex];
+            kanjiElement.innerHTML = currentKanji.kanji;
+            meaningElement.innerHTML = currentKanji.meaning;
+            readingElement.innerHTML = currentKanji.reading;
+            readingElement.style.display = "none";
+        }
+
+        function showReading() {
+            readingElement.style.display = "block";
+        }
+
+                function prevKanji() {
+            currentIndex = (currentIndex - 1 + kanjiList.length) % kanjiList.length;
+            showKanji();
+        }
+
+        function nextKanji() {
+            currentIndex = (currentIndex + 1) % kanjiList.length;
+            showKanji();
+        }
+
+        showKanji();
+
+        showReadingButton.addEventListener("click", showReading);
+        prevButton.addEventListener("click", prevKanji);
+        nextButton.addEventListener("click", nextKanji);
+        returnButton.addEventListener("click", function() {
+            location.href = "index.html";
+        });
+    </script>
+</body>
+</html>
+
+
